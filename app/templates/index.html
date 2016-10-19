@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block container %}
+<div class="row">
+  <div class="col-md-12">
+    <h1>Morseöversättaren</h1>
+  </div>
+</div>
+<div class="row">
+  <!-- Left column -->
+  <div class="col-md-6">
+    <p>Skriv in något i rutan och klicka på skicka.</p>
+
+    {{ wtf.quick_form(morse_form, action="#", button_map={'submit': 'primary'}) }}
+
+    {% if morse %}
+    <p>
+      Din inmatade text översattes till:
+    </p>
+    <pre>{{ morse }}</pre>
+    {% endif %}
+  </div>
+
+  <!-- Right column -->
+  <div class="col-md-6">
+    <p>Skriv in något i rutan och klicka på skicka.</p>
+
+    {{ wtf.quick_form(text_form, action="#", button_map={'submit': 'primary'}) }}
+
+    {% if text %}
+    <p>
+      Din inmatade morsekod översattes till:
+    </p>
+    <pre>{{ text }}</pre>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
